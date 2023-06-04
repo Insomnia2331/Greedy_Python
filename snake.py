@@ -162,13 +162,12 @@ def draw_snake():
 #*************************************************************************  distingush win/lose     
 def check_out_boundry(): #可改
     cell_diameter = 2*CELL_RADIUS
-    out_boundry_x = [cell for cell in game.snake.body if 
-                     cell.x < cell_diameter or cell.x > SCREEN_SIZE[0] -cell_diameter]
-    out_boundry_y = [cell for cell in game.snake.body if 
-                     cell.y < cell_diameter or cell.y > SCREEN_SIZE[1] -cell_diameter]
-    if len(out_boundry_x) >0 or len(out_boundry_y) >0:
+    if  game.snake.body[0].x < cell_diameter or game.snake.body[0].x > SCREEN_SIZE[0] - cell_diameter:
         game.running = False
-        game.message = "Snake is out of boundry. You wanna try again?"+" Press 'y' or 'n'"
+        game.message = "Snake is out of boundry. You wanna try again?"+" Press 'y' or 'n'"        
+    if game.snake.body[0].y < cell_diameter or game.snake.body[0].y > SCREEN_SIZE[1] - cell_diameter:
+        game.running = False
+        game.message = "Snake is out of boundry. You wanna try again?"+" Press 'y' or 'n'"    
         
 def check_win():
     length = len(game.snake.body)
